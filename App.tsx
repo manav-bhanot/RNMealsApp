@@ -1,20 +1,20 @@
 import React from 'react';
-import {StatusBar, StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
+import CategoriesScreen from './screens/CategoriesScreen';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Hello World !!!</Text>
-      <StatusBar barStyle={'default'} />
-    </View>
+    <>
+    <StatusBar barStyle={'light-content'} />
+      <SafeAreaView style={[styles.container, {backgroundColor: 'black'}]}>
+        <CategoriesScreen />
+      </SafeAreaView>
+    </>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 });

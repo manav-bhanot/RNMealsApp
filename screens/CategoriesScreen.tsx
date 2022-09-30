@@ -1,12 +1,15 @@
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, FlatList} from 'react-native';
 import React from 'react';
 import {CATEGORIES} from '../data/dummy-data';
 import CategoryGridTile from '../components/CategoryGridTile';
 
 const CategoriesScreen = ({navigation}: {navigation: any}) => {
-  const pressHandler = () => {
+  const pressHandler = (itemData: any) => {
     // Navigate
-    navigation.navigate('MealsOverview');
+    // The second json object is actually the route.params
+    navigation.navigate('MealsOverview', {
+      categoryId: itemData.item.id,
+    });
   };
 
   const renderCategoryItem = (itemData: any) => {
@@ -14,7 +17,7 @@ const CategoriesScreen = ({navigation}: {navigation: any}) => {
       <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
-        onPress={pressHandler}
+        onPress={pressHandler.bind(this, itemData)}
       />
     );
   };

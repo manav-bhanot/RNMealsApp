@@ -1,14 +1,20 @@
 import React from 'react';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import CategoriesScreen from './screens/CategoriesScreen';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
     <>
-    <StatusBar barStyle={'light-content'} />
-      <SafeAreaView style={[styles.container, {backgroundColor: 'black'}]}>
-        <CategoriesScreen />
-      </SafeAreaView>
+      <StatusBar barStyle={'light-content'} />
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen name="MealsCategories" component={CategoriesScreen} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </>
   );
 }

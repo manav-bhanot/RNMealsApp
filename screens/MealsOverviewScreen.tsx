@@ -12,7 +12,17 @@ const MealsOverviewScreen = ({route}: {route: any}) => {
   });
 
   const renderMealItem = (itemData: {item: Meal}) => {
-    return <MealItem meal={itemData.item} />;
+    const mealItem = itemData.item;
+
+    const mealItemProps = {
+      title: mealItem.title,
+      imageUrl: mealItem.imageUrl,
+      affordability: mealItem.affordability,
+      complexity: mealItem.complexity,
+      duration: mealItem.duration,
+    };
+
+    return <MealItem {...mealItemProps} />;
   };
 
   return (
